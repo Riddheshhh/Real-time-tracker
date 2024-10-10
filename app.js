@@ -30,3 +30,5 @@ app.get("/", function (req, res){
 }); 
 
 server.listen(3000);
+
+console.log("adfadf")
