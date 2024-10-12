@@ -14,9 +14,11 @@ console.log(path.join(__dirname, "public"))
 io.on("connection", function(socket){
   console.log('A user connected');
 
+  socket.emit("updateMyLocation", {id:socket.id} )
+
   socket.on("send-location", function (data){
     console.log(data)
-    io.emit("received_location", {id:socket.id, ...data})
+    socket.broadcast.emit("received_location", {id:socket.id, ...data})
   });
   
   socket.on("disconnect", function () {
