@@ -32,24 +32,28 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 socket.on("updateMyLocation", (data) => {
   const{id} = data;
-  navigator.geolocation.watchPosition(
+  setTimeout(() => {
     
-    (position)=>{
-      const {latitude, longitude} =  position.coords;
+    
+    navigator.geolocation.watchPosition(
       
-
-      map.setView([latitude, longitude], 25); 
-     
-      if(markers[id]){
-        markers[id].setLatLng([latitude, longitude])
-      }
-      else{
-        markers[id] = L.marker([latitude,longitude]).addTo(map);
-      }
-    })
-
-});
-
+      (position)=>{
+        const {latitude, longitude} =  position.coords;
+        
+        
+        map.setView([latitude, longitude], 25); 
+        
+        if(markers[id]){
+          markers[id].setLatLng([latitude, longitude])
+        }
+        else{
+          markers[id] = L.marker([latitude,longitude]).addTo(map);
+        }
+      })
+      
+    }, 5000);
+    });
+    
 
 
 socket.on("received_location", (data) =>{
