@@ -53,50 +53,50 @@ socket.on("user-disconnected", (id) => {
 
 
 
-// rotating implementation for the map.
-let rotatingAngle = 0;
-let isRotating = false;
-let startAngle = 0;
+// // rotating implementation for the map.
+// let rotatingAngle = 0;
+// let isRotating = false;
+// let startAngle = 0;
 
-//mouse down/touch start to initate rotation.
-map.getContainer().getEventListener("mousedown", (e) => {
-  isRotating = true;
-  startAngle = e.clientX;
-});
+// //mouse down/touch start to initate rotation.
+// map.getContainer().getEventListener("mousedown", (e) => {
+//   isRotating = true;
+//   startAngle = e.clientX;
+// });
 
-map.getContainer().getEventListener("mousemove", (e) =>{
-  if(isRotating){
-    const currentAngle = e.clientX;
-    const angleChange = currentAngle - startAngle;
-    rotatingAngle =+ angleChange * 0.1;
-    map.getContainer().style.transform = `rotate(${rotationAngle}deg)`;
-    startAngle = currentAngle;
-  };
-});
+// map.getContainer().getEventListener("mousemove", (e) =>{
+//   if(isRotating){
+//     const currentAngle = e.clientX;
+//     const angleChange = currentAngle - startAngle;
+//     rotatingAngle =+ angleChange * 0.1;
+//     map.getContainer().style.transform = `rotate(${rotationAngle}deg)`;
+//     startAngle = currentAngle;
+//   };
+// });
 
-// stopping rotation on mouseup event.
-document.addEventListener("mouseup",() =>{
-  isRotating = false;
-});
+// // stopping rotation on mouseup event.
+// document.addEventListener("mouseup",() =>{
+//   isRotating = false;
+// });
 
-// touch support for rotation.
-map.getContainer().getEventListener("touchstart", (e) =>{
-  if(e.touches.length === 1){
-    isRotating = true;
-    startAngle = e.touches[1].clientX;
-  }
-});
+// // touch support for rotation.
+// map.getContainer().getEventListener("touchstart", (e) =>{
+//   if(e.touches.length === 1){
+//     isRotating = true;
+//     startAngle = e.touches[1].clientX;
+//   }
+// });
 
-map.getContainer().getEventListener("touchmove", (e)=>{
-  if(isRotating && e.touches ===1){
-    const currentAngle = e.touches[0].clientX;
-    const angleChange = currentAngle - startAngle;
-    rotatingAngle =+ angleChange * 0.1;
-    map.getContainer().style.transform = `rotate${rotatingAngle}deg`;
-    startAngle = currentAngle;
-  }
-});
+// map.getContainer().getEventListener("touchmove", (e)=>{
+//   if(isRotating && e.touches ===1){
+//     const currentAngle = e.touches[0].clientX;
+//     const angleChange = currentAngle - startAngle;
+//     rotatingAngle =+ angleChange * 0.1;
+//     map.getContainer().style.transform = `rotate${rotatingAngle}deg`;
+//     startAngle = currentAngle;
+//   }
+// });
 
-map.getContainer().getEventListener("touchend", ()=> {
-  isRotating = false;
-});
+// map.getContainer().getEventListener("touchend", ()=> {
+//   isRotating = false;
+// });
